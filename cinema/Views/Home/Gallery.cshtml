@@ -1,0 +1,173 @@
+﻿@model IEnumerable<cinema.Models.Movies>
+
+@{
+    ViewBag.Title = "Gallery";
+}
+<link href="~/css/Style.css" rel="stylesheet" />
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+<div class="white-box">
+
+
+    <h2 id="headG">Gallery</h2>
+    <br />
+    <label>Filter by:</label>
+    <br />
+    <table>
+        <tr>
+            <th>
+                <form action="@Url.Action("Gallery","Home", new { filterValue = "Price increase"})" method="post">
+                    <input id="sendDetails" type="submit" value="Price increase" class="btn btn-danger" />
+                </form>
+            </th>
+            <th>
+                <form action="@Url.Action("Gallery","Home", new { filterValue = "Price decrease"})" method="post">
+                    <input id="sendDetails" type="submit" value="Price decrease" class="btn btn-danger" />
+                </form>
+            </th>
+            <th>
+                <form action="@Url.Action("Gallery","Home", new { filterValue = "Most Popular"})" method="post">
+                    <input id="sendDetails" type="submit" value="Most Popular" class="btn btn-danger" />
+                </form>
+            </th>
+            <th>
+                <form action="@Url.Action("Gallery","Home", new { filterValue = "On Sale"})" method="post">
+                    <input id="sendDetails" type="submit" value="On Sale" class="btn btn-danger" />
+                </form>
+            </th>
+            <th>
+                <form action="@Url.Action("Gallery","Home", new { filterValue = "Safe Content"})" method="post">
+                    <input id="age" name="age" type="submit" value="Safe Content" class="btn btn-danger" />
+                    @*//<input type="submit" value="Save" class="btn btn-info" />*@
+                </form>
+            </th>
+            <th>
+                <form action="@Url.Action("Gallery","Home", new { filterValue = "Pegi 16"})" method="post">
+                    <input id="age" name="age" type="submit" value="16+" class="btn btn-danger" />
+                    @*//<input type="submit" value="Save" class="btn btn-info" />*@
+                </form>
+            </th>
+        </tr>
+
+
+    </table>
+    <br />
+    <table>
+        <tr>
+            <th>
+                <form action="@Url.Action("Gallery","Home", new { filterValue = "Category"})" method="post">
+                    <label for="category">Category:</label>
+
+                    <select name="category" id="category">
+                        <option value="SuperHeroes">SuperHeroes</option>
+                        <option value="Science Fiction">Science Fiction</option>
+                        <option value="Animation">Animation</option>
+                        <option value="Comedia">Comedia</option>
+                    </select>
+                    <input id="sendDetails" type="submit" value="Filter" class="btn btn-outline-info" />
+                </form>
+            </th>
+            <th>
+                <form action="@Url.Action("Gallery","Home", new { filterValue = "Date"})" method="post">
+                    <input id="date" type="date" value="Filter" name="date" />
+                    <input id="sendDetails" type="submit" value="Filter" class="btn btn-outline-info">
+                </form>
+            </th>
+            <th>
+                <form action="@Url.Action("Gallery","Home", new { filterValue = "Hour"})" method="post">
+                    <input id="hour" type="time" value="Filter" name="hour" />
+                    <input id="sendDetails" type="submit" value="Filter" class="btn btn-outline-info">
+                </form>
+            </th>
+        </tr>
+        <tr>
+            <th>
+                <label>Price Range:</label>
+                <form action="@Url.Action("Gallery","Home", new { filterValue = "Price Range"})" method="post">
+                    <input type="range" list="tickmarks" name="priceRange">
+
+                    <datalist id="tickmarks">
+                        <option value="0" label="0"></option>
+                        <option value="10"></option>
+                        <option value="20"></option>
+                        <option value="30"></option>
+                        <option value="40"></option>
+                        <option value="50" label="50"></option>
+                        <option value="60"></option>
+                        <option value="70"></option>
+                        <option value="80"></option>
+                        <option value="90"></option>
+                        <option value="100" label="100"></option>
+                    </datalist>
+                    @*<input id="priceRange" type="range" value="Filter" name="priceRange" min="0" max="100" />
+                        <label for="PriceRange">Price Range</label>*@
+                    <br />
+                    <input id="sendDetails" type="submit" value="Filter" class="btn btn-outline-info">
+                </form>
+            </th>
+        </tr>
+    </table>
+
+    @*<datalist id="filter">
+            <option action="Gallery" method="get" value="Price increase">
+            <option action="Gallery" method="get" value="Price decrease">
+            <option value="Most Popular">
+            <option value="Category">
+            <option value="On Sale">
+        </datalist>*@
+    <br />
+    <br />
+    <table class="table">
+        <tr>
+            <th>
+                <b>Movie Name</b>
+            </th>
+            <th>
+                <b>Category</b>
+            </th>
+            <th>
+                <b>Age Limit</b>
+            </th>
+            <th>
+                <b>Current Price</b>
+            </th>
+            <th>
+                <b>Previous Price</b>
+            </th>
+            <th>
+                <b>Poster</b>
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.movieName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.category)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ageLimit)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.currentPrice) ₪
+                </td>
+                <td>
+                    <strike>
+                        @Html.DisplayFor(modelItem => item.previousPrice) ₪
+                    </strike>
+                </td>
+                <td>
+                    <img src="@Html.DisplayFor(modelItem => item.poster)" width="90" height="130" />
+                </td>
+                <td>
+                    @Html.ActionLink("View Screenings", "ViewScreenings", new { movieName = item.movieName })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

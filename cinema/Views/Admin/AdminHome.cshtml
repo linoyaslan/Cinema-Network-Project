@@ -1,0 +1,28 @@
+﻿@{
+    Layout = "~/Views/Shared/adminLayout.cshtml";
+}
+@{
+    ViewBag.Title = "AdminHome";
+}
+<h2>Admin Home</h2>
+<br />
+<br />
+<div class="adminH">
+    <form method="get" action="/Admin/Movies">
+        <input type="submit" class="btn btn-info  btn-lg" name="Movies" id="Movies" value="Edit Movies" />
+    </form><br />
+    <form method="get" action="/Admin/EditHalls">
+        <input type="submit" class="btn btn-info  btn-lg" name="Movies" id="Movies" value="Edit Halls" />
+    </form><br />
+    <form method="get" action="/Admin/EditSeats">
+        <input type="submit" class="btn btn-info  btn-lg" name="Movies" id="Movies" value="Edit Seats" />
+    </form>
+
+
+
+    @*@Html.ActionLink("Add/Remove/Edit Price of Movies", "Movies")*@
+    <!--<button type="button" class="btn btn-info  btn-lg">Manage Halls</button>-->
+    @*@Html.ActionLink("Manage Halls", "Movies")*@
+    <!--<button type="button" class="btn btn-info  btn-lg">Manage Seats</button>-->
+
+</div>

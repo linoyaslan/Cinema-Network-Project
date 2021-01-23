@@ -1,0 +1,91 @@
+﻿@{
+    Layout = "~/Views/Shared/adminLayout.cshtml";
+}
+@model cinema.Models.Movies
+
+@{
+    ViewBag.Title = "Add New Movie";
+}
+
+@section scripts{
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}
+<h2>Add New Movie</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.movieName, htmlAttributes: new { @class = "control-label col-md-2" })*@
+
+            <div class="col-md-10">
+                <label>Movie Name</label>
+                @Html.EditorFor(model => model.movieName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.movieName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.category, htmlAttributes: new { @class = "control-label col-md-2" })*@
+
+            <div class="col-md-10">
+                <label>Category</label>
+                @Html.EditorFor(model => model.category, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.category, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.ageLimit, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <div class="col-md-10">
+                <label>Age Limit</label>
+                @Html.EditorFor(model => model.ageLimit, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ageLimit, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.currentPrice, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <div class="col-md-10">
+                <label>Current Price</label>
+                @Html.EditorFor(model => model.currentPrice, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.currentPrice, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.previousPrice, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <div class="col-md-10">
+                <label>Previous Price</label>
+                @Html.EditorFor(model => model.previousPrice, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.previousPrice, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.poster, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <div class="col-md-10">
+                <label>Poster</label>
+                @Html.EditorFor(model => model.poster, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.poster, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to Manage Movies", "Movies")
+</div>

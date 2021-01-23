@@ -1,0 +1,23 @@
+﻿@model cinema.Models.Users
+
+@{
+    ViewBag.Title = "SignUp";
+}
+<link href="~/css/signup.css" rel="stylesheet" />
+<div class="signup">
+    <h2>Sign Up</h2>
+    <br />
+    <form action="SignUp1" method="post">
+        <label>User Name</label>
+        <input name="userName" type="text" id="userName" /> <br /><br />
+        <label>Password&nbsp;</label>
+        <input name="userPassword" type="password" id="userPassword" /> <br /><br />
+         <label>Email&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+        <input name="email" type="email" id="email" /> <br /><br />
+        <input id="sendDetails" type="submit" value="Submit" class="btn btn-info" />
+    </form>
+
+
+    <br />
+</div>
+

@@ -1,0 +1,45 @@
+﻿
+
+.cart {
+    border: 1px solid white;
+    margin: 0 auto;
+    background: white;
+    opacity: 0.8;
+    border-radius: 25px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    margin-top: 30px;
+    padding-left: 25px;
+}
+
+.paypal{
+    padding-bottom: 10px;
+}
+
+
+.navbar-custom .nav-item .nav-link {
+    color: #ffffff;
+}
+
+    .navbar-custom .nav-item .nav-link:hover {
+        color: black;
+    }
+
+.navbar-inverse .navbar-nav li a {
+    color: #ffffff;
+}
+
+    .navbar-inverse .navbar-nav li a:hover {
+        color: black;
+    }
+
+.navbar .container a {
+    opacity: 0.9;
+}
+
+.navbar-inverse .navbar-brand {
+    color: white;
+}
+
+    .navbar-inverse .navbar-brand:hover {
+        color: black;
+    }

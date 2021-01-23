@@ -1,0 +1,69 @@
+﻿@model IEnumerable<cinema.Models.Screenings>
+
+@{
+    ViewBag.Title = "ViewScreenings";
+}
+<link href="~/css/viewScreening.css" rel="stylesheet" />
+<div class="viewS">
+    <h2>View Screenings</h2>
+
+    @{ string movieNameTemp = "";}
+    <table class="table">
+        <tr>
+            <th>
+                <b>Movie Name</b>
+            </th>
+            <th>
+                <b>Screening Date</b>
+            </th>
+            <th>
+                <b>Screening Hour</b>
+            </th>
+            <th>
+                <b>Number Of Hall</b>
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            using (Html.BeginForm("Buy", "Home", new { movieName = item.movieName, sDate = item.sDate, sHour = item.sHour, hall = item.hall }))
+            {
+                <tr>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.movieName)
+                        @{movieNameTemp = item.movieName; }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.sDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.sHour)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.hall)
+                    </td>
+                    @*<td>
+                            @Html.ActionLink("Buy a Ticket", "Buy", new { sDate = item.sDate, sHour = item.sHour, hall = item.hall })
+                        </td>*@
+                    <td>
+                        <input type="submit" value="Buy a Ticket" class="btn btn-info" />
+                    </td>
+
+                </tr>
+            }
+        }
+
+    </table>
+
+    <table>
+        <tr>
+            <th class="displayLast">
+                <form action="@Url.Action("ViewScreenings","Home", new {movieName = movieNameTemp, filterValue = "lastDate"})" method="post" name="lastDate">
+                    <input id="sendDetails" type="submit" value="Display Last Date" class="btn btn-info" />
+                </form>
+            </th>
+        </tr>
+    </table>
+</div>

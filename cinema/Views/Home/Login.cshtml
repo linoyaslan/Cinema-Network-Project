@@ -1,0 +1,27 @@
+﻿@model cinema.Models.Users
+
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<link href="~/css/login.css" rel="stylesheet" />
+<div class="login">
+    <h2>Login</h2>
+    <br />
+
+    <form action="Login1" method="post">
+        <label>User Name</label>
+        <input name="userName" type="text" id="userName" /> <br /><br />
+        <label>Password   </label>
+        <input name="userPassword" type="password" id="userPassword" /> <br /><br />
+        <input id="sendDetails" type="submit" value="Submit" class="btn btn-info" />
+    </form>
+
+
+    <br />
+    <div class="notRegister">
+        @Html.ActionLink("Not a register user? Please SignUp", "SignUp")
+    </div>
+
+</div>

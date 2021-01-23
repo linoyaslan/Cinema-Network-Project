@@ -1,0 +1,101 @@
+﻿@model IEnumerable<cinema.Models.Cart>
+
+@{
+    ViewBag.Title = "Cart";
+}
+<link href="~/css/cart.css" rel="stylesheet" />
+<div class="cart">
+    <h2>Your Cart</h2>
+
+    <table class="table">
+        <tr>
+            <th>
+                <b>Movie Name</b>
+            </th>
+            <th>
+                <b>Date</b>
+            </th>
+            <th>
+                <b>Hour</b>
+            </th>
+            <th>
+                <b>Hall</b>
+            </th>
+            <th>
+                <b>Seat Number</b>
+            </th>
+            <th>
+                <b>Row Number</b>
+            </th>
+            <th>
+                <b>Price</b>
+            </th>
+            <th></th>
+        </tr>
+        @{ int total = 0;}
+        @if (Model != null)
+        {
+
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.movieName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.sDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.sHour)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.hall)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.numOfSeat)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.numOfRow)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.price)
+                        @{total += item.price;}
+                    </td>
+                    <td>
+                        @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
+                        @Html.ActionLink("Delete", "DeleteFromCart", new { sDate = item.sDate, sHour = item.sHour, hall = item.hall, numOfSeat = item.numOfSeat, numOfRow = item.numOfRow })
+                    </td>
+                </tr>
+                                }
+                            }
+
+
+    </table>
+    <b>Total:  @total </b>
+    <br /><br />
+    <table>
+        <tr>
+            <th>
+                <form action="Payment" method="get">
+                    <input id="sendDetails" type="submit" value="Pay With Credit" class="btn btn-info" />
+                </form>
+            </th>
+            <th class="paypal">
+                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                    <input type="hidden" name="cmd" value="_xclick">
+                    <input type="hidden" name="business" value="Linoyaslan@gmail.com">
+                    <input type="hidden" name="lc" value="IL">
+                    <input type="hidden" name="item_name" value="Ticket">
+                    <input type="hidden" name="amount" value="@total">
+                    <input type="hidden" name="currency_code" value="ILS">
+                    <input type="hidden" name="button_subtype" value="services">
+                    <input type="hidden" name="no_note" value="0">
+                    <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynowCC_LG.gif:NonHostedGuest">
+                    <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                    <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                </form>
+            </th>
+        </tr>
+    </table>
+</div>

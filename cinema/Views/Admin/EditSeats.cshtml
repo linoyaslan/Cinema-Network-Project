@@ -1,0 +1,41 @@
+﻿@{
+    Layout = "~/Views/Shared/adminLayout.cshtml";
+}
+    @model IEnumerable<cinema.Models.Hall>
+
+    @{
+        ViewBag.Title = "EditSeats";
+    }
+
+    <h2>Edit Seats</h2>
+
+    <table class="table">
+        <tr>
+            <th>
+                <b>Hall</b>
+            </th>
+            <th>
+                <b>Number Of Seats</b>
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.hall)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.numOfSeats)
+                </td>
+                <td>
+                    <form method="post" action="@Url.Action("EditSeats1","Admin", new {numOfSeats = item.numOfSeats , hall = @item.hall})">
+                        <input type="number" name="EditSeats" id="EditSeats" style="width:100%;" min="1" max="30">
+                        <input type="submit" value="Save" class="btn btn-info" />
+                    </form>
+                </td>
+            </tr>
+        }
+
+    </table>

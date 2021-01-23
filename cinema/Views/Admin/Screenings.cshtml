@@ -1,0 +1,62 @@
+﻿@{
+    Layout = "~/Views/Shared/adminLayout.cshtml";
+}
+    @model IEnumerable<cinema.Models.Screenings>
+
+    @{
+        ViewBag.Title = "Screenings";
+    }
+
+    <h2>Screenings</h2>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.movies.movieName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.movies.category)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.halls.hall)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.sHour)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.sDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.movies.ageLimit)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.movies.movieName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.movies.category)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.halls.hall)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.sHour)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.sDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.movies.ageLimit)
+                </td>
+                <td>
+                    @Html.ActionLink("Manage Halls", "HallsManage", new { sDate = item.sDate, sHour = item.sHour, hall = item.hall })
+                </td>
+            </tr>
+        }
+
+    </table>

@@ -1,0 +1,35 @@
+﻿
+@model cinema.Models.Cart
+@using cinema.Models
+@using cinema.Dal
+@{
+    ViewBag.Title = "PayDirectly";
+}
+<link href="~/css/payment.css" rel="stylesheet" />
+<div class="pay">
+    <h2>Payment</h2>
+    <br />
+    <br />
+    @*@{var newDal = new CinemaDal();
+            var cartList = new List<Cart>();
+            int i = 0;
+            foreach (var item in newDal.cart.ToList<Cart>())
+            {
+                    Cart c = (from x in newDal.cart select x).ToList<Cart>()[i];
+                    cartList.Add(c);
+                    i++;
+                }
+            }
+        }*@
+    <form action="PayDirectly1" method="post">
+        <label>Number Of Credit Card</label>
+        <input name="creditCard" type="text" pattern="\d*" id="creditCard" maxlength="16" minlength="16" /><br /><br />
+        <label>Validity Month</label>
+        <input name="validityM" type="number" id="validityM" min="1" max="12" /> <br /><br />
+        <label>Validity Year</label>
+        <input name="ValidityY" type="number" id="ValidityY" min="2021" /> <br /><br />
+        <label>CCV Number</label>
+        <input name="ccv" type="text" id="ccv" pattern="\d*" maxlength="3" minlength="3" /> <br /><br />
+        <input id="sendDetails" type="submit" value="Submit" class="btn btn-info" />
+    </form>
+</div>

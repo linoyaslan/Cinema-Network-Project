@@ -1,0 +1,70 @@
+﻿@model IEnumerable<cinema.Models.ViewTicket>
+@{
+    ViewBag.Title = "Buy";
+}
+<link href="~/css/buy.css" rel="stylesheet" />
+<div class="buy">
+    <h2>Buy</h2>
+
+    <table class="table">
+        <tr>
+            <th>
+                <b>Row Number</b>
+            </th>
+            <th>
+                <b>Seat Number</b>
+            </th>
+            <th>
+                <b>Taken Or Not</b>
+            </th>
+            <th></th>
+            <th></th>
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            //using (Html.BeginForm("AddToCart", "Home", new { movieName = item.movieName, sDate = item.sDate, sHour = item.sHour, hall = item.hall, numOfRow = item.row, numOfSeat = item.col }))
+            //{
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.row)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.col)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.taken)
+                </td>
+                @*<td>
+                        @Html.ActionLink("Buy a Ticket", "Buy", new { sDate = item.sDate, sHour = item.sHour, hall = item.hall })
+                    </td>*@
+
+                @*<td>
+                        <input type="submit" value="Add To Cart" />
+                    </td>*@
+
+
+                <td>
+                    @if (item.taken == "Unoccupied")
+                    {
+                        <form action="@Url.Action("AddToCart","Home", new {movieName = item.movieName, sDate = item.sDate, sHour = item.sHour, hall = item.hall, numOfRow = item.row, numOfSeat = item.col })" method="post">
+                            <input id="sendDetails" type="submit" value="Add To Cart" class="btn btn-info" />
+                        </form>
+                    }
+                <td />
+                <td>
+                    @if (item.taken == "Unoccupied")
+                    {
+                        <form action="@Url.Action("PayDirectly", "Home", new { movieName = item.movieName, sDate = item.sDate, sHour = item.sHour, hall = item.hall, numOfRow = item.row, numOfSeat = item.col })" method="post">
+                            <input id="sendDetails" type="submit" value="Pay Directly" class="btn btn-info" />
+                        </form>
+                    }
+                </td>
+            </tr>
+            @*}*@
+        }
+
+    </table>
+</div>

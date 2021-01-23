@@ -1,0 +1,100 @@
+﻿@{
+    Layout = "~/Views/Shared/adminLayout.cshtml";
+}
+    @*@model cinema.Models.Movies
+
+        @{
+            ViewBag.Title = "Edit Price";
+        }
+
+
+            <div class="form-horizontal">
+                <h1>Edit Price</h1>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <form method="post"   action="@Url.Action("EditPrice1","Admin")">
+                            <input type="number" name="EditPrice" id="EditPrice" style="width:100%;" min="1">
+                            <input type="submit" value="Save" class="btn btn-default" />
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+
+
+        <div>
+            @Html.ActionLink("Back to Manage Movies", "Movies")
+        </div>
+    *@
+
+
+
+
+    @model IEnumerable<cinema.Models.Movies>
+
+    @{
+        ViewBag.Title = "Manage Movies";
+    }
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/adminManageScript.js"></script>
+
+    <h2>Manage Movies</h2>
+
+    <table class="table">
+        <tr>
+            <th>
+                <b>Movie Name</b>
+            </th>
+            <th>
+                <b>Category</b>
+            </th>
+            <th>
+                <b>Age Limit</b>
+            </th>
+            <th>
+                <b>Current Price</b>
+            </th>
+            <th>
+                <b>Previous Price</b>
+            </th>
+            <th>
+                <b>Poster</b>
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.movieName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.category)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ageLimit)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.currentPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.previousPrice)
+                </td>
+                <td>
+                    <img src="@Html.DisplayFor(modelItem => item.poster)" width="90" height="130" />
+                </td>
+                <td>
+                    <form method="post" action="@Url.Action("EditPrice1","Admin", new { movieName = @item.movieName})">
+                        <input type="number" name="EditPrice" id="EditPrice" style="width:100%;" min="1">
+                        <input type="submit" value="Save" class="btn btn-info" />
+                    </form>
+
+                </td>
+            </tr>
+        }
+        <div>
+            @Html.ActionLink("Back to Movies Manager", "Movies")
+        </div>
+
+    </table>

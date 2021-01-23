@@ -1,0 +1,44 @@
+﻿body {
+    background-image: url(https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80);
+}
+
+.white-box {
+    background-color: white;
+    border-radius: 25px;
+    padding: 20px;
+    margin: 30px;
+    opacity: 0.85;
+}
+
+
+h2, .h2 {
+    text-align: center;
+    font-size: 40px;
+}
+
+.navbar-custom .nav-item .nav-link {
+    color: #ffffff;
+}
+
+.navbar-custom .nav-item .nav-link:hover {
+    color: black;
+}
+
+.navbar-inverse .navbar-nav li a {
+    color: #ffffff;
+}
+    .navbar-inverse .navbar-nav li a:hover{
+        color:black;
+    }
+
+    .navbar .container a {
+        opacity: 0.9;
+    }
+
+.navbar-inverse .navbar-brand {
+    color: white;
+}
+
+.navbar-inverse .navbar-brand:hover {
+    color: black;
+}
